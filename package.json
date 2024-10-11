@@ -1,0 +1,11 @@
+{
+  "name": "nPM1300_Arduino",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "pio run -t clean",
+    "build": "pio run",
+    "upload": "pio run -t upload",
+    "monitor": "pio device monitor"
+  }
+}
