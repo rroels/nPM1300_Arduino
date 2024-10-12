@@ -15,7 +15,7 @@ void setUp(void) {}
 void tearDown(void) {}
 
 /*
- * HELPERS
+ *  HELPERS
  */
 
 void check_led_modes(nPM1300::LED led, uint16_t mode_register) {
