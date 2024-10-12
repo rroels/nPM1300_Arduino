@@ -50,6 +50,8 @@ public:
         BCHGENABLECLR       = 0x0305,
         BCHGDISABLESET      = 0x0306, // also used to disable thermistor use
         BCHGDISABLECLR      = 0x0307,
+        BCHGISETMSB         = 0x0308,
+        BCHGISETLSB         = 0x0309,
         BCHGVTERM           = 0x030C,
         BCHGVTERMR          = 0x030D,
         BCHGCHARGESTATUS    = 0x0334,
@@ -130,6 +132,7 @@ public:
     uint8_t get_charge_status();
     uint8_t get_error_reason();
     uint8_t get_error_extra();
+    void set_charge_current(uint16_t limit);
 
 
 private:

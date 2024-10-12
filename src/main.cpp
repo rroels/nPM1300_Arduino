@@ -20,7 +20,7 @@ void setup() {
 
     npm1300.set_vterm(nPM1300::V4_15);
     npm1300.set_vterm_warm(nPM1300::V4_10);
-
+    npm1300.set_charge_current(400);
 
     npm1300.charger_on();
 

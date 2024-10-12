@@ -40,3 +40,18 @@ uint8_t nPM1300::get_error_reason() {
 uint8_t nPM1300::get_error_extra() {
     return read_register(BCHGERRSENSOR);
 }
+
+void nPM1300::set_charge_current(uint16_t limit) {
+    // make sure value is between 32 and 800
+    if(limit < 32) { limit = 32; }
+    if(limit > 800) { limit = 800; }
+
+    uint8_t msb = limit/4;
+    uint8_t lsb = 1;
+    if ((limit/2) % 2) {
+        lsb = 0;
+    }
+
+    write_register(BCHGISETMSB, msb);
+    write_register(BCHGISETLSB, lsb);
+}
