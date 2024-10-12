@@ -2,7 +2,10 @@
 #include "npm1300.h"
 
 void nPM1300::charger_on() {
+    // make it ignore NTC (there is none connected)
     write_register(BCHGDISABLESET, 0b00000010);
+
+    // enable charger
     write_register(BCHGENABLESET, 0b00000001);
 }
 

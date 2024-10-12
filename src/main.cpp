@@ -14,12 +14,13 @@ void setup() {
     npm1300.reset();
     delay(100);
 
-    npm1300.led_set_mode(nPM1300::LED::LED0, nPM1300::LEDMode::CHARGING);
-    npm1300.led_set_mode(nPM1300::LED::LED1, nPM1300::LEDMode::ERROR);
+    npm1300.led_set_mode(nPM1300::LED::LED0, nPM1300::LEDMode::ERROR);
+    npm1300.led_set_mode(nPM1300::LED::LED1, nPM1300::LEDMode::CHARGING);
     npm1300.led_set_mode(nPM1300::LED::LED2, nPM1300::LEDMode::HOST);
 
     npm1300.set_vterm(nPM1300::V4_15);
     npm1300.set_vterm_warm(nPM1300::V4_10);
+
 
     npm1300.charger_on();
 

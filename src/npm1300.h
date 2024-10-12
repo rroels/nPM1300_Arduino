@@ -48,7 +48,8 @@ public:
         // CHARGER
         BCHGENABLESET       = 0x0304,
         BCHGENABLECLR       = 0x0305,
-        BCHGDISABLESET      = 0x0305, // also used to disable thermistor use
+        BCHGDISABLESET      = 0x0306, // also used to disable thermistor use
+        BCHGDISABLECLR      = 0x0307,
         BCHGVTERM           = 0x030C,
         BCHGVTERMR          = 0x030D,
         BCHGCHARGESTATUS    = 0x0334,
