@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <unity.h>
 #include "npm1300.h"
-#include "i2c_helper.h"
+#include "../helpers/i2c_helper.h"
 
 /*
  * SETUP
@@ -79,27 +79,27 @@ void test_led_defaults() {
 }
 
 void test_led0_modes() {
-    check_led_modes(nPM1300::LED::LED0, 0x0A00); // LEDDRV0MODESEL
+    check_led_modes(nPM1300::LED0, 0x0A00); // LEDDRV0MODESEL
 }
 
 void test_led1_modes() {
-    check_led_modes(nPM1300::LED::LED1, 0x0A01); // LEDDRV1MODESEL
+    check_led_modes(nPM1300::LED1, 0x0A01); // LEDDRV1MODESEL
 }
 
 void test_led2_modes() {
-    check_led_modes(nPM1300::LED::LED2, 0x0A02); // LEDDRV2MODESEL
+    check_led_modes(nPM1300::LED2, 0x0A02); // LEDDRV2MODESEL
 }
 
 void test_led0_states() {
-    check_led_on_off(nPM1300::LED::LED0, 0x0A00, 0x0A03, 0x0A04); // LEDDRV0MODESEL, LEDDRV0SET & LEDDRV0CLR
+    check_led_on_off(nPM1300::LED0, 0x0A00, 0x0A03, 0x0A04); // LEDDRV0MODESEL, LEDDRV0SET & LEDDRV0CLR
 }
 
 void test_led1_states() {
-    check_led_on_off(nPM1300::LED::LED1, 0x0A01, 0x0A05, 0x0A06); // LEDDRV1MODESEL, LEDDRV1SET & LEDDRV1CLR
+    check_led_on_off(nPM1300::LED1, 0x0A01, 0x0A05, 0x0A06); // LEDDRV1MODESEL, LEDDRV1SET & LEDDRV1CLR
 }
 
 void test_led2_states() {
-    check_led_on_off(nPM1300::LED::LED2, 0x0A02, 0x0A07, 0x0A08); // LEDDRV2MODESEL, LEDDRV2SET & LEDDRV2CLR
+    check_led_on_off(nPM1300::LED2, 0x0A02, 0x0A07, 0x0A08); // LEDDRV2MODESEL, LEDDRV2SET & LEDDRV2CLR
 }
 
 /*
