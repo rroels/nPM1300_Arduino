@@ -8,11 +8,18 @@ class nPM1300 : public I2C_Device
 {
 public:
 
-    // constructors
+    // constructor
     nPM1300( TwoWire& wire, const uint8_t i2c_address = 0 );
+
+    // -------------------------------
+    // -------- REGISTERS ------------
+    // -------------------------------
 
     enum Reg
     {
+        // RESET
+        TASKSWRESET     = 0x0001,
+
         // LEDDRV
         LEDDRV0MODESEL  = 0x0A00,
         LEDDRV1MODESEL  = 0x0A01,
@@ -25,6 +32,14 @@ public:
         LEDDRV2CLR      = 0x0A08
     };
 
+    // -------------------------------
+    // -------- GENERIC -------------
+    // -------------------------------
+
+    void reset();
+
+    // -------------------------------
+    // -------- LEDDRV ---------------
     // -------------------------------
 
     enum LEDMode {
@@ -43,8 +58,14 @@ public:
     void led_toggle(LED led);
     void led_set_mode(LED led, LEDMode mode);
     void led_set_state(LED led, bool state);
+    bool led_get_state(LED led);
     void led_on(LED led);
     void led_off(LED led);
+
+    // -------------------------------
+    // -------- LEDDRV ---------------
+    // -------------------------------
+
 
 private:
     bool led_state[3] = {false};

@@ -13,6 +13,7 @@ public:
 private:
     TwoWire& i2c;
     uint8_t i2c_address;
+    uint8_t buffer[2];
 };
 
 #endif //I2C_HELPER_H
