@@ -26,7 +26,7 @@ void setup() {
 
 void loop() {
     npm1300.led_toggle(nPM1300::LED::LED2);
-    
+
     Serial.print("TEMP: ");
     Serial.println(npm1300.measure_temperature());
     Serial.print("VBAT: ");

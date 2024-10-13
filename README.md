@@ -71,7 +71,24 @@ Run specific suite:
 pio test --filter "test_monitor"
 ```
 
+## Hardware
 
+This library is being developed and tested for my custom nPM1300 breakout board:
+
+https://github.com/rroels/nPM1300-breakout
+
+<img src="images/pcb.jpg" width="600">
+
+However, There is nothing in this driver that would prevent it from working with the nPM1300 EK Evaluation Kit or other boards.
+
+## Troubleshooting
+
+* Battery charging is not working.
+  * By default, the nPM1300 expects an NTC to be present to measure battery temperature. If the battery does not have an NTC, you need to call `ignore_ntc()`. Without this hardware setting, the nPM1300 charging will not work if there is no NTC!
+
+* The nPM1300 is not communicating over I2C when powered by battery.
+  * Depending on your setup, if you are testing this with an Arduino, you might need a common ground for I2C to work (connect the arduino GND with the nPM1300 circuit GND).
+  * [https://forum.arduino.cc/t/common-ground-and-why-you-need-one/626215/13](https://forum.arduino.cc/t/common-ground-and-why-you-need-one/626215/13)
 
 ## Sources 
 
