@@ -18,7 +18,8 @@ void tearDown(void) {}
  * TESTS
  */
 
-// we expect the led modes to have reset when the npm1300 resets
+// we know the led modes revert to their default values after a reset
+// we use this to verify that the nPM1300 resets when instructed
 void test_reset() {
     // led0 should start in "error mode"
     reg_value = i2c_read_byte(0x0A00); // LEDDRV0MODESEL

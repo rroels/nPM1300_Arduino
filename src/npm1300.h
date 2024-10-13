@@ -8,7 +8,10 @@ class nPM1300 : public I2C_Device
 {
 public:
 
-    // constructor
+    // -------------------------------
+    // -------- CONSTRUCTOR ----------
+    // -------------------------------
+
     nPM1300( TwoWire& wire, const uint8_t i2c_address = 0 );
 
     // -------------------------------
@@ -58,10 +61,15 @@ public:
         BCHGERRREASON       = 0x0336,
         BCHGERRSENSOR       = 0x0337,
 
+        // SYSREG
+        VBUSSUSPEND         = 0x0203,
+        USBCDETECTSTATUS    = 0x0205,
+        VBUSINSTATUS        = 0x0207,
+
     };
 
     // -------------------------------
-    // -------- GENERIC -------------
+    // -------- GENERIC --------------
     // -------------------------------
 
     void reset();
@@ -95,7 +103,6 @@ public:
     // -------------------------------
 
     float measure_vbat();
-    //void measure_ibat();
     float measure_vbus();
     float measure_vsys();
     float measure_temperature();
@@ -125,15 +132,20 @@ public:
 
     void charger_on();
     void charger_off();
+    void ignore_ntc(bool ignore);
+    void set_recharge(bool enabled);
     uint8_t get_vterm();
     void set_vterm(VTERM vterm);
-    uint8_t get_vterm_warm();
-    void set_vterm_warm(VTERM vterm);
     uint8_t get_charge_status();
     uint8_t get_error_reason();
     uint8_t get_error_extra();
     void set_charge_current(uint16_t limit);
 
+    // -------------------------------
+    // -------- SYSREG ---------------
+    // -------------------------------
+
+    uint8_t get_vbus_status();
 
 private:
     bool led_state[3] = {false};

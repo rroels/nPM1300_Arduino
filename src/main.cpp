@@ -19,7 +19,7 @@ void setup() {
     npm1300.led_set_mode(nPM1300::LED::LED2, nPM1300::LEDMode::HOST);
 
     npm1300.set_vterm(nPM1300::V4_15);
-    npm1300.set_vterm_warm(nPM1300::V4_10);
+    npm1300.ignore_ntc(true); // mandatory, if you don't have a ntc connected!
     npm1300.set_charge_current(400);
 
     npm1300.charger_on();
@@ -27,8 +27,6 @@ void setup() {
 }
 
 void loop() {
-    //npm1300.led_toggle(nPM1300::LED::LED0);
-    //npm1300.led_toggle(nPM1300::LED::LED1);
     npm1300.led_toggle(nPM1300::LED::LED2);
 
     Serial.print("TEMP: ");
@@ -41,14 +39,15 @@ void loop() {
     Serial.println(npm1300.measure_vbus());
     Serial.print("VTERM: ");
     Serial.println(npm1300.get_vterm());
-    Serial.print("VTERM WARM: ");
-    Serial.println(npm1300.get_vterm_warm());
     Serial.print("CHARGER STATUS: ");
     Serial.println(npm1300.get_charge_status(), BIN);
     Serial.print("ERROR REASON: ");
     Serial.println(npm1300.get_error_reason(), BIN);
     Serial.print("ERROR EXTRA: ");
     Serial.println(npm1300.get_error_extra(), BIN);
+
+    Serial.print("VBUS STATUS: ");
+    Serial.println(npm1300.get_vbus_status(), BIN);
     Serial.println("");
 
     delay(1000);

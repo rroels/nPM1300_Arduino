@@ -18,6 +18,7 @@ void tearDown(void) {}
  *  HELPERS
  */
 
+// iterate and verify the 4 possible led modes, for the given led
 void check_led_modes(nPM1300::LED led, uint16_t mode_register) {
     npm1300.led_set_mode(led, nPM1300::LEDMode::ERROR);
     reg_value = i2c_read_byte(mode_register);

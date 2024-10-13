@@ -9,6 +9,27 @@ void nPM1300::charger_on() {
     write_register(BCHGENABLESET, 0b00000001);
 }
 
+void nPM1300::ignore_ntc(bool ignore) {
+    if (ignore) {
+        // charging will ignore the NTC thermistor resistor measure
+        write_register(BCHGDISABLESET, 0b00000010);
+    } else {
+        // charging will use the NTC thermistor resistor measure
+        write_register(BCHGDISABLECLR, 0b00000010);
+    }
+}
+
+void nPM1300::set_recharge(bool enabled) {
+    if (enabled) {
+        // enable Recharging of battery once charged
+        write_register(BCHGDISABLECLR, 0b00000001);
+    } else {
+        // disable Recharging of battery once charged
+        write_register(BCHGDISABLESET, 0b00000001);
+    }
+}
+
+
 void nPM1300::charger_off() {
     write_register(BCHGENABLECLR, 0b00000001);
 }
@@ -18,14 +39,9 @@ uint8_t nPM1300::get_vterm() {
 }
 
 void nPM1300::set_vterm(VTERM vterm) {
+    // set voltage at which to stop charging
     write_register(BCHGVTERM, vterm);
-}
-
-uint8_t nPM1300::get_vterm_warm() {
-    return read_register(BCHGVTERMR);
-}
-
-void nPM1300::set_vterm_warm(VTERM vterm) {
+    // set voltage at which to stop charging when the die temp is "warm"
     write_register(BCHGVTERMR, vterm);
 }
 
