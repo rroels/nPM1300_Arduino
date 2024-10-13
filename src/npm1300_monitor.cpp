@@ -18,10 +18,10 @@ float nPM1300::measure_vbus() {
     write_register(TASKVBUS7MEASURE, 0b00000001);
 
     // ADCVBAT3RESULTMSB is not a typo, it is shared for vbat and vbus results
-    uint8_t vbat_msb = read_register(ADCVBAT3RESULTMSB);
-    uint8_t vbat_lsb = read_register(ADCGP1RESULTLSBS);
-    vbat_lsb = (vbat_lsb & 0b00000011);
-    uint16_t total = (vbat_msb << 2) | vbat_lsb;
+    uint8_t vbus_msb = read_register(ADCVBAT3RESULTMSB);
+    uint8_t vbus_lsb = read_register(ADCGP1RESULTLSBS);
+    vbus_lsb = (vbus_lsb & 0b00000011);
+    uint16_t total = (vbus_msb << 2) | vbus_lsb;
 
     // (V_BUSADC/1023) * VFS_VBUS
     // VFS_VBUS	= 7.5 (fixed value, see datasheet)

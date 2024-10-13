@@ -10,10 +10,10 @@ public:
     I2C_Device(TwoWire& i2c, uint8_t i2c_address = 0x6B);
     void write_register(uint16_t address, uint8_t data);
     uint8_t read_register(uint16_t address);
+    uint8_t read_bytes(uint16_t address, char* buffer, uint8_t count);
 private:
     TwoWire& i2c;
     uint8_t i2c_address;
-    uint8_t buffer[2];
 };
 
 #endif //I2C_HELPER_H

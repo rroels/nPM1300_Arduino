@@ -7,7 +7,6 @@
 nPM1300 npm1300(Wire, 0x6B);
 
 void setup() {
-
     Serial.begin(115200);
     Wire.begin();
 
@@ -23,12 +22,11 @@ void setup() {
     npm1300.set_charge_current(400);
 
     npm1300.charger_on();
-
 }
 
 void loop() {
     npm1300.led_toggle(nPM1300::LED::LED2);
-
+    
     Serial.print("TEMP: ");
     Serial.println(npm1300.measure_temperature());
     Serial.print("VBAT: ");
@@ -45,7 +43,6 @@ void loop() {
     Serial.println(npm1300.get_error_reason(), BIN);
     Serial.print("ERROR EXTRA: ");
     Serial.println(npm1300.get_error_extra(), BIN);
-
     Serial.print("VBUS STATUS: ");
     Serial.println(npm1300.get_vbus_status(), BIN);
     Serial.println("");
